@@ -5,6 +5,67 @@
     <meta name="viewport" content="width=device-width" , initial-scale="1.0">
     <title>UC CMP V2 TCF</title>
 <script id="usercentrics-cmp" src="https://app.usercentrics.eu/browser-ui/latest/loader.js" data-settings-id="A2eCZhp3NLZzuC" data-tcf-enabled async></script>
+
+    <script id="usercentrics-cmp" data-settings-id="{{A2eCZhp3NLZzuC}}"
+  src="https://app.usercentrics.eu/browser-ui/latest/loader.js"
+  data-tcf-enabled data-suppress-cmp-display >
+</script>
+<script type="text/javascript" charset="UTF-8">
+  !function() {
+    var cpBaseUrl = 'https://static.contentpass.net';
+    var cpController = cpBaseUrl + '/now.js';
+    var cpPropertyId = '7c7fb122';
+
+    !function(C,o,n,t,P,a,s){C.CPObject=n,C[n]||(C[n]=function(m,x){
+    C[n].q||(C[n].q=[]),
+    C[n].q.push(arguments),C[n].patched||("fatal"===m&&x&&(C[n].le=x,
+    Array.prototype.forEach.call(C[n].q,(function(e){
+    "error"===e[0]&&"function"==typeof e[1]&&e[1](x)
+    }))),C[n].le&&"error"===m&&"function"==typeof x&&x(C[n].le))}),C[n].l=+new Date,
+    C[n].sv=4,(a=o.createElement(t)).onerror=function(e){C[n]("fatal",e)
+    },a.src=P,(s=o.getElementsByTagName(t)[0]).parentNode.insertBefore(a,s)
+    }(window,document,"cp","script",cpController);
+
+    // Will activate Contentpass and initialize basic interfaces for
+    // communicating with Contentpass
+    cp('create', cpPropertyId, {
+      baseUrl: cpBaseUrl,
+      apiURL: 'https://api.contentpass.net/'
+    });
+
+    // Will render the wall provided by contentpass.
+    // If user gives full consent, the onFullConsent callback is fired.
+    // If user is logged into contentpass and has a valid subscription for the
+    // current website, no wall is displayed.
+    // Use the cp('authenticate') function below to react on further details
+    // regarding contentpass users.
+    cp('render', {
+      onFullConsent: function() {
+        console.log('[DEMO] onFullConsent');
+        // load advertising
+      }
+    });
+
+    // Will evaluate the user's login state regarding contentpass and whether
+    // user has a valid subscription.
+    // This call is optional as cp('render') above is also checking for the
+    // contentpass subscription state.
+    // Use this function for example to update your layout for contentpass users.
+    cp('authenticate', function (error, user) {
+      if (error) {
+        // Error handling depending on use case
+        return;
+      }
+
+      if (user.isLoggedIn() && user.hasValidSubscription()) {
+        // User has valid subscription
+      } else {
+        // User has no valid subscription
+      }
+    });
+  }()
+</script>
+    
     <!-- Google Analytics -->
     <script type="text/plain" data-usercentrics="Google Analytics">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
