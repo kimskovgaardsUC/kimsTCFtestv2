@@ -34,5 +34,20 @@
     <!-- End Google Tag Manager (noscript) -->
     <h1>UC CMP V2 TCF</h1>
     <img src="https://usercentrics.com/wp-content/uploads/2020/04/190208-UCS-Logo-800px.png" alt="uc-logo">
+    <script>
+window.addEventListener('DOMContentLoaded', function () {
+    if (typeof __tcfapi === 'function') {
+        __tcfapi('addEventListener', 2, function(tcData, success) {
+            if (success) {
+                console.log('tcfEvent', tcData);
+            } else {
+                console.log('no success');
+            }
+        });
+    } else {
+        console.log('__tcfapi not available yet');
+    }
+});
+</script>
 </body>
 </html>
